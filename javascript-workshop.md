@@ -76,10 +76,35 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('นายวรปรัชญ์ บุญมี')">ปุ่มที่ 1</button>
+    <button id="btn2">ปุ่มที่ 2</button>
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            const today = new Date();
+            alert('วันนี้วันที่ ' + today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear());
+        };
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+```javascript
+function hello3() {
+    const now = new Date();
+    alert('เวลาปัจจุบัน: ' + now.toLocaleTimeString());
+}
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![รูปผลการทดลองที่ 1]
+![alt text](lab1.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล

@@ -159,12 +159,22 @@ let person = {
 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา  ประกอบด้วยข้อมูล รหัสนักศึกษา, ชื่อ, สาขาวิชา, เกรดเฉลี่ย
 
 ### บันทึกผลการทดลอง 2.1
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+const myName = "นายวรปรัชญ์ บุญมี";
+const studentID = "68030255";
+let midtermScore = 67;
+let finalScore = 76;
+
+let myinfo = {
+    myName,
+    studentID,
+    grade : 4,
+    major : "เทคโนโลยีคอมพิวเตอร์",
+}
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
-
+![รูปผลการทดลองที่ 2.1]
+![alt text](2-1.png)
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
 
@@ -215,11 +225,48 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>โปรแกรมคำนวณ</title>
+</head>
+<body>
+
+    <h1>ผลลัพธ์การคำนวณ</h1>
+    <div id="result"></div>
+
+    <script>
+        let score1 = 80;
+        let score2 = 75;
+        let score3 = 90;
+        let average = (score1 + score2 + score3) / 3;
+        let productName = "หูฟัง Bluetooth";
+        let price = 1200;
+        let vat = price * 0.07;
+        let totalPrice = price + vat;
+        const display = document.getElementById('result');
+        display.innerHTML = `
+            <h3>คะแนนเฉลี่ย</h3>
+            <p>คะแนนทั้ง 3 วิชาคือ: ${score1}, ${score2}, ${score3}</p>
+            <p><strong>ค่าเฉลี่ย:</strong> ${average.toFixed(2)}</p>           
+            <hr>           
+            <h3>คำนวณราคาสินค้า (รวม VAT 7%)</h3>
+            <p>ชื่อสินค้า: ${productName}</p>
+            <p>ราคาตั้งต้น: ${price} บาท</p>
+            <p>VAT 7%: ${vat.toFixed(2)} บาท</p>
+            <p><strong>ราคาสุทธิ:</strong> ${totalPrice.toFixed(2)} บาท</p>
+        `;
+        console.log("คะแนนเฉลี่ย:", average);
+        console.log("ราคาสุทธิ:", totalPrice);
+    </script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
-
+![รูปผลการทดลองที่ 2.2]
+![alt text](2-2.png)
 ### 2.3 การควบคุมการทำงาน
 
 JavaScript มีโครงสร้างควบคุมการทำงานหลักๆ ดังนี้:
@@ -349,10 +396,47 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<body>
+<header>lab2.3</header>
+    <script>
+        let number = 15;
+        if (number % 2 === 0) {
+            console.log(number + " เป็นเลขคู่");
+        } else {
+            console.log(number + " เป็นเลขคี่");
+        }
+        console.log("สูตรคูณแม่ 2");
+        for (let i = 1; i <= 12; i++) {
+            console.log(`2 x ${i} = ${2 * i}`);
+        }
+        console.log("สูตรคูณแม่ 3");
+        let j = 1;
+        while (j <= 12) {
+            console.log(`3 x ${j} = ${3 * j}`);
+            j++;
+        }
+        console.log("นับถอยหลัง");
+        for (let count = 10; count >= 1; count--) {
+            console.log(count);
+        }
+        let age = 20;
+        let stage = "";
+        if (age < 13) {
+            stage = "วัยเด็ก";
+        } else if (age <= 19) {
+            stage = "วัยรุ่น";
+        } else {
+            stage = "วัยผู้ใหญ่";
+        }
+        console.log("อายุ " + age + " ปี คือ " + stage);
+    </script>
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![รูปผลการทดลองที่ 2.3]![alt text](2-3.png)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -464,10 +548,46 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function calculateBMI(weight, heightCm) {
+        let heightM = heightCm / 100;
+        let bmi = weight / (heightM * heightM);
+        return bmi.toFixed(2);
+    }
+    function greetByAge(name, age) {
+        if (age < 13) {
+            return `สวัสดีจ้า น้อง ${name}`;
+        } else if (age <= 19) {
+            return `สวัสดีครับ/ค่ะ คุณ ${name} (วัยรุ่น)`;
+        } else {
+            return `สวัสดีครับ/ค่ะ คุณ ${name} (วัยผู้ใหญ่)`;
+        }
+    }
+    function checkPassword(password) {
+        if (password.length > 8) {
+            return "รหัสผ่านถูกต้อง (ยาวกว่า 8 ตัวอักษร)";
+        } else {
+            return "รหัสผ่านไม่ปลอดภัย (ต้องมากกว่า 8 ตัวอักษร)";
+        }
+    }
+    console.log("BMI ของคุณคือ:", calculateBMI(111, 183));
+    console.log(greetByAge("ไร่ขิง", 19));
+    console.log(checkPassword("680302556767"));
+    console.log(checkPassword("1234"));
+</script>
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
+![รูปผลการทดลองที่ 2.4.1]![alt text](2-4-1.png)
 
 
 
@@ -508,11 +628,42 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const calculateBMI = (weight, heightCm) => {
+    const heightM = heightCm / 100;
+    return (weight / (heightM * heightM)).toFixed(2);
+};
+
+const greetByAge = (name, age) => {
+    if (age < 13) return `สวัสดีจ้า น้อง ${name}`;
+    if (age <= 19) return `สวัสดีคุณ ${name} (วัยรุ่น)`;
+    return `สวัสดีคุณ ${name} (วัยผู้ใหญ่)`;
+};
+const isPasswordValid = (password) => password.length > 8;
+
+console.log("BMI:", calculateBMI(111, 183));
+console.log(greetByAge("วรปรัชญ์", 19));
+const myPassword = "password123";
+if (isPasswordValid(myPassword)) {
+    console.log("รหัสผ่านผ่านเกณฑ์");
+} else {
+    console.log("รหัสผ่านไม่ผ่านเกณฑ์");
+}
+    </script>
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.2](images/image.png)
-
+![รูปผลการทดลองที่ 2.4.2]
+![alt text](2-4-2.png)
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
 ### การทดลองที่ 3.1 การสร้างปุ่มและจัดการ Event ด้วย JavaScript
